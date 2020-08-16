@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "706652651207",
+    "firebase_url": "https://meesees-b21a4.firebaseio.com",
+    "project_id": "meesees-b21a4",
+    "storage_bucket": "meesees-b21a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706652651207:android:b7ca10dda16b94512c48e2",
+        "android_client_info": {
+          "package_name": "com.jntDevz.MEESEES"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706652651207-8j2n8pc40j1bgchsn7roo9vpo1e8lf1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSF-yChJOUqR49HRlzOrJVd6AdGyfhvOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "706652651207-8j2n8pc40j1bgchsn7roo9vpo1e8lf1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

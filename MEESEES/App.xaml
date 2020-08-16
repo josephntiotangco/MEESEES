@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:effects="clr-namespace:MEESEES.Effects"
+             mc:Ignorable="d"
+             x:Class="MEESEES.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="AppBackgroundColor">#e9f8f0</Color>
+            <Color x:Key="NavigationBarColor">#F1F8E9</Color>
+            <Color x:Key="NavigationBarTextColor">#4d259f</Color>
+            <Color x:Key="NormalTextColor">#4d259f</Color>
+
+            <!-- Implicit styles -->
+            <Style TargetType="{x:Type NavigationPage}">
+                <Setter Property="BarBackgroundColor"
+                    Value="{StaticResource NavigationBarColor}" />
+                <Setter Property="BarTextColor"
+                    Value="{StaticResource NavigationBarTextColor}" />
+                <!--<Setter Property="Visual" Value="Material"></Setter>-->
+            </Style>
+            <Style x:Key="CustomDatePicker" TargetType="DatePicker">
+                <Setter Property="Margin" Value="10,0,10,0"></Setter>
+                <Setter Property="TextColor" Value="#4d259f"></Setter>
+                <Setter Property="Format" Value="MM/dd/yyyy"></Setter>
+                <Setter Property="CharacterSpacing" Value="3"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="Visual" Value="Material"></Setter>
+            </Style>
+            <Style x:Key="CustomLabel" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+                <Setter Property="FontSize" Value="12"></Setter>
+                <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+                <Setter Property="TextColor" Value="#4d259f"></Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+                <Setter Property="Visual" Value="Material"></Setter>
+            </Style>
+            <Style x:Key="DashboardLabel" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+                <Setter Property="FontSize" Value="12"></Setter>
+                <Setter Property="TextColor" Value="#4d259f"></Setter>
+                <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="HeightRequest" Value="50"></Setter>
+                <Setter Property="WidthRequest" Value="10"></Setter>
+                <Setter Property="Margin" Value="10,0,0,0"></Setter>
+                <Setter Property="Visual" Value="Material"></Setter>
+            </Style>
+            <Style x:Key="DashboardValueLabel" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+                <Setter Property="FontSize" Value="Medium"></Setter>
+                <Setter Property="TextColor" Value="#4d259f"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+                <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="Margin" Value="10,5,10,5"></Setter>
+                <Setter Property="Visual" Value="Material"></Setter>
+            </Style>
+            <Style x:Key="RoundedEntry" TargetType="effects:RoundedEntry">
+                <Setter Property="TextColor" Value="#4d259f"/>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+                <Setter Property="FontSize" Value="Medium"></Setter>
+                <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+                <Setter Property="VerticalOptions" Value="End"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="Visual" Value="Material"></Setter>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+            <Style x:Key="CustomEntry" TargetType="Entry">
+                <Setter Property="TextColor" Value="#4d259f"></Setter>
+                <Setter Property="FontAttributes" Value="None"></Setter>
+                <Setter Property="FontSize" Value="Medium"></Setter>
+                <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="Visual" Value="Material"></Setter>
+            </Style>
+            <Style x:Key="CustomEntryInput" TargetType="Entry">
+                <Setter Property="TextColor" Value="#4d259f"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+                <Setter Property="FontSize" Value="Medium"></Setter>
+                <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+                <Setter Property="VerticalTextAlignment" Value="End"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="VerticalOptions" Value="End"></Setter>
+                <Setter Property="Margin" Value="10,0,10,0"></Setter>
+                <Setter Property="Visual" Value="Material"></Setter>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+            <Style x:Key="LoginEntry" TargetType="Entry">
+                <Setter Property="TextColor" Value="#4d259f"></Setter>
+                <Setter Property="FontSize" Value="Large"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+                <Setter Property="VerticalOptions" Value="End"></Setter>
+                <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+                <Setter Property="Visual" Value="Material"></Setter>
+            </Style>
+            <Style x:Key="CustomButton" TargetType="Button">
+                <Setter Property="TextColor" Value="#4d259f"></Setter>
+                <Setter Property="VerticalOptions" Value="Center"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="BackgroundColor" Value="#DCEDC8"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+                <Setter Property="CornerRadius" Value="10"></Setter>
+                <Setter Property="FontSize" Value="Medium"></Setter>
+                <Setter Property="Visual" Value="Material"></Setter>
+            </Style>
+            <Style x:Key="CustomButtonMenu" TargetType="Button">
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="ContentLayout" Value="Left,0"/>
+                <Setter Property="TextColor" Value="#4d259f"/>
+                <Setter Property="FontFamily" Value="Calibri"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="FontSize" Value="Body"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+            </Style>
+            <Style x:Key="CustomFrame" TargetType="Frame">
+                <Setter Property="Padding" Value="0"></Setter>
+                <Setter Property="CornerRadius" Value="10"></Setter>
+                <Setter Property="Background" Value="#e9f8f0"></Setter>
+                <Setter Property="Margin" Value="30,0,30,0"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+            </Style>
+            <Style x:Key="CustomFrameEntry" TargetType="Frame">
+                <Setter Property="Padding" Value="5"></Setter>
+                <Setter Property="CornerRadius" Value="10"></Setter>
+                <Setter Property="Background" Value="#e9f8f0"></Setter>
+                <Setter Property="Margin" Value="30,0,30,0"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

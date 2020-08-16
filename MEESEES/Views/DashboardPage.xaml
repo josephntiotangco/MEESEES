@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:MEESEES"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             mc:Ignorable="d"
+             xmlns:ads="clr-namespace:MEESEES.ViewModels;assembly=MEESEES"
+             x:Class="MEESEES.Views.DashboardPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="pastelshutdown50.png" Clicked="OnLogOutClicked"/>
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button ImageSource="pastelback50.png" BackgroundColor="Transparent" Grid.Column="0" Clicked="OnBackButtonClicked"/>
+            <Frame CornerRadius="10" Grid.Column="1" BackgroundColor="White" Margin="5" Padding="2">
+                <Picker ItemsSource="{Binding Paydays}" Grid.Column="1" SelectedItem="{Binding SelectedPayday}" FontAttributes="Bold" TextColor="#4d259f" SelectedIndexChanged="OnSelectionChange" ItemDisplayBinding="{Binding Description}" Visual="Material" HorizontalTextAlignment="Center"/>
+            </Frame>
+            <Button ImageSource="pastelnext50.png" BackgroundColor="Transparent" Grid.Column="2" Clicked="OnNextButtonClicked"/>
+        </Grid>
+        <RefreshView Command="{Binding RefreshDataCommand}" IsRefreshing="{Binding IsRefreshing}" Grid.Row="1">
+            <ScrollView Grid.Row="1">
+                <Grid Grid.Row="1" Margin="5,10,5,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <!--<RowDefinition Height="auto"/>-->
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="0" CornerRadius="10" BorderColor="Red" Padding="0"
+                           HasShadow="True"
+                           HorizontalOptions="FillAndExpand"  Margin="20,5,20,5"
+                           VerticalOptions="Center">
+                        <StackLayout Padding="10,5,10,5"   
+                             Orientation="Horizontal" 
+                             BackgroundColor="White">
+                            <Label  Text="Total Fund:" Style="{StaticResource Key=DashboardLabel}"/>
+                            <Frame CornerRadius="10" Padding="0"
+                                   HorizontalOptions="FillAndExpand" Margin="5" VerticalOptions="Center"
+                                   HasShadow="True" BackgroundColor="White">
+                                <Label x:Name="lblFund" Text="{Binding TotalFund}" Style="{StaticResource Key=DashboardValueLabel}"/>
+                            </Frame>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnFundStackTapped" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="1" CornerRadius="10" BorderColor="Red" Padding="0"
+                           HasShadow="True"
+                           HorizontalOptions="FillAndExpand"  Margin="20,5,20,5"
+                           VerticalOptions="Center">
+                        <StackLayout Padding="10,5,10,5"   
+                             Orientation="Horizontal" 
+                             BackgroundColor="White">
+                            <Label Text="Total Expense:" Style="{StaticResource Key=DashboardLabel}"/>
+                            <Frame CornerRadius="10" Padding="0"
+                                   HorizontalOptions="FillAndExpand" Margin="5" VerticalOptions="Center"
+                                   HasShadow="True" BackgroundColor="White">
+                                <Label x:Name="lblExpense" Text="{Binding TotalExpense}" Style="{StaticResource Key=DashboardValueLabel}"/>
+                            </Frame>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnExpenseStackTapped" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="2" CornerRadius="10" BorderColor="Red" Padding="0"
+                           HasShadow="True"
+                           HorizontalOptions="FillAndExpand"  Margin="20,5,20,5"
+                           VerticalOptions="Center">
+                        <StackLayout Padding="10,5,10,5"   
+                             Orientation="Horizontal" 
+                             BackgroundColor="White">
+                            <Label   Text="Total Balance:" Style="{StaticResource Key=DashboardLabel}"/>
+                            <Frame CornerRadius="10" Padding="0"
+                                   HorizontalOptions="FillAndExpand" Margin="5" VerticalOptions="Center"
+                                   HasShadow="True" BackgroundColor="White">
+                                <Label x:Name="lblBalance" Text="{Binding TotalBalance}" Style="{StaticResource Key=DashboardValueLabel}"/>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="3" CornerRadius="10" BorderColor="Red" Padding="0"
+                           HasShadow="True"
+                           HorizontalOptions="FillAndExpand" Margin="20,5,20,5"
+                           VerticalOptions="Center">
+                        <StackLayout Padding="10,5,10,5"   
+                             Orientation="Horizontal" 
+                             BackgroundColor="White">
+                            <Label  Text="Should be Savings:" Style="{StaticResource Key=DashboardLabel}"/>
+                            <Frame CornerRadius="10" Padding="0"
+                                   HorizontalOptions="FillAndExpand" Margin="5" VerticalOptions="Center"
+                                   HasShadow="True" BackgroundColor="White">
+                                <Label x:Name="lblSavings" Text="{Binding Savings}" Style="{StaticResource Key=DashboardValueLabel}"/>
+                            </Frame>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnSavingsStackTapped" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="4" CornerRadius="10" Padding="2" BackgroundColor="#F1F8E9">
+                        <chart:SfChart Margin="5" HeightRequest="200" >
+                            <chart:SfChart.Legend>
+                                <chart:ChartLegend/>
+                            </chart:SfChart.Legend>
+                            <chart:PieSeries ItemsSource="{Binding PieChart}" XBindingPath="Type" YBindingPath="Amount" DataMarkerPosition="OutsideExtended">
+                                <chart:PieSeries.DataMarker>
+                                    <chart:ChartDataMarker ShowLabel="True" LabelContent="DataMarkerLabel">
+                                        <chart:ChartDataMarker.LabelStyle>
+                                            <chart:DataMarkerLabelStyle LabelFormat="##.##"/>
+                                        </chart:ChartDataMarker.LabelStyle>
+                                    </chart:ChartDataMarker>
+                                </chart:PieSeries.DataMarker>
+                            </chart:PieSeries>
+                        </chart:SfChart>
+                    </Frame>
+                    <!--<Frame Grid.Row="5" CornerRadius="10" Padding="2" BackgroundColor="#F1F8E9">
+                        <chart:SfChart  Margin="5" HeightRequest="500" >
+                            <chart:SfChart.Legend >
+                                <chart:ChartLegend/>
+                            </chart:SfChart.Legend>
+                            <chart:StackingBarSeries ItemsSource="{Binding BarChart}" XBindingPath="Type" YBindingPath="Amount" DataMarkerPosition="Top">
+                                <chart:StackingBarSeries.DataMarker ShowLabel="True" LabelContent="DataMarkerLabel">
+                                    <chart:ChartDataMarker ShowLabel="True" LabelContent="DataMarkerLabel">
+                                        <chart:ChartDataMarker.LabelStyle>
+                                            <chart:DataMarkerLabelStyle LabelFormat="##.##"/>
+                                        </chart:ChartDataMarker.LabelStyle>
+                                    </chart:ChartDataMarker>
+                                </chart:StackingBarSeries.DataMarker>
+                            </chart:StackingBarSeries>
+                        </chart:SfChart>
+                    </Frame>-->
+                    <StackLayout Grid.Row="5">
+                        <Button Clicked="OnResetClicked" ImageSource="pasteltmachine50.png" ContentLayout="Top,0" Margin="130,5,130,5" HeightRequest="70" WidthRequest="50" Style="{StaticResource Key=CustomButton}"/>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+        </RefreshView>
+        <ads:AdMobView HeightRequest="90" BackgroundColor="White" Grid.Row="2"/>
+    </Grid>
+</ContentPage>

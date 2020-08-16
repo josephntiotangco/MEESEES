@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             MasterBehavior="Popover"
+             x:Class="MEESEES.Views.MenuPage">
+    <MasterDetailPage.Master>
+        <ContentPage Padding="0" BackgroundColor="White" Title="Master">
+            <ContentPage.Content>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" >
+                        <Frame HeightRequest="100" Padding="0">
+                            <Image HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="meeseesIcon50.png"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1">
+                        <Button ImageSource="pastelchart50" BackgroundColor="Transparent" Text="Dashboard"  Clicked="OnDashboardClicked" Style="{StaticResource Key=CustomButtonMenu}"/>
+                        <Button ImageSource="pastelsafein50" BackgroundColor="Transparent" Text="Add Fund"  Clicked="OnNewFundClicked" Style="{StaticResource Key=CustomButtonMenu}"/>
+                        <Button ImageSource="pastelcashbook50.png" BackgroundColor="Transparent"   Text="Fund List"  Clicked="OnFundListClicked" Style="{StaticResource Key=CustomButtonMenu}"/>
+                        <Button ImageSource="pastelsafeout50" BackgroundColor="Transparent" Text="Add Expense"  Clicked="OnNewExpenseClicked" Style="{StaticResource Key=CustomButtonMenu}"/>
+                        <Button ImageSource="pastelcashbook50.png" BackgroundColor="Transparent"  Text="Expense List"  Clicked="OnExpenseListClicked" Style="{StaticResource Key=CustomButtonMenu}"/>
+                        <Button ImageSource="pastelaccount50.png" BackgroundColor="Transparent"  Text="My Account" Clicked="OnSettingsClicked" Style="{StaticResource Key=CustomButtonMenu}"/>
+                    </StackLayout>
+                </Grid>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <ContentPage Padding="10" BackgroundColor="White">
+            <ContentPage.Content>
+                <StackLayout Margin="5,30,5,5">
+                    <Label Text="Detail Page"></Label>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

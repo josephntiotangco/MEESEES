@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:ads="clr-namespace:MEESEES.ViewModels;assembly=MEESEES"
+             mc:Ignorable="d" 
+             xmlns:effects="clr-namespace:MEESEES.Effects;assembly=MEESEES"
+             Title="Budget Your Expenses" IconImageSource="piggyIcon.png"
+             x:Class="MEESEES.Views.LoginPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="pastelinfo50.png" Command="{Binding AboutCommand}"/>
+    </ContentPage.ToolbarItems>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Frame BackgroundColor="White" CornerRadius="10" Grid.Row="0" Margin="5,30,5,10">
+            <StackLayout>
+                
+                <Frame BackgroundColor="White" CornerRadius="10" Margin="30,20,30,0">
+                    <Entry  x:Name="txtUsername" Background="{x:Null}" Style="{StaticResource Key=LoginEntry}" Completed="OnEntryComplete" Text="{Binding InputUserName, Mode=TwoWay}"  
+                   Placeholder="USERNAME" />
+                </Frame>
+                <Frame BackgroundColor="White" CornerRadius="10" Margin="30,0,30,0">
+                    <Entry x:Name="txtPassword" Background="{x:Null}" IsPassword="True" Style="{StaticResource Key=LoginEntry}"  Completed="OnEntryComplete"  Text="{Binding InputPassword, Mode=TwoWay}"  
+                   Placeholder="PASSWORD" />
+                </Frame>
+                <Button x:Name="btnSignIn" Command="{Binding LoginCommand}" Text="SIGN IN" Style="{StaticResource Key=CustomButton}" Margin="30,20,30,5" />
+                <Button x:Name="btnAddUser" Clicked="OnAddUserClicked" Style="{StaticResource Key=CustomButton}"
+                    Text="REGISTER" Margin="30,5,30,5" />
+            </StackLayout>
+        </Frame>
+        <ads:AdMobView HeightRequest="90" BackgroundColor="White" Grid.Row="1"/>
+    </Grid>
+</ContentPage>

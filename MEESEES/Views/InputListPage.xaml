@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Name="inputListPage"
+             xmlns:ads="clr-namespace:MEESEES.ViewModels;assembly=MEESEES"
+             x:Class="MEESEES.Views.InputListPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button ImageSource="pastelback50.png" BackgroundColor="Transparent" Grid.Column="0" Clicked="OnBackButtonClicked"/>
+                <Frame CornerRadius="10" Grid.Column="1" BackgroundColor="White" Margin="5" Padding="2">
+                    <Picker ItemsSource="{Binding Paydays}" Grid.Column="1" FontAttributes="Bold" TextColor="#4d259f" SelectedItem="{Binding SelectedPayday}" SelectedIndexChanged="OnSelectionChange" ItemDisplayBinding="{Binding Description}" Visual="Material" HorizontalTextAlignment="Center"/>
+                </Frame>
+                <Button ImageSource="pastelnext50.png" BackgroundColor="Transparent" Grid.Column="2" Clicked="OnNextButtonClicked"/>
+            </Grid>
+            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="5" Color="#4d259f" Grid.Row="1"/>
+        </Grid>
+        <RefreshView Command="{Binding RefreshDataCommand}" IsRefreshing="{Binding IsRefreshing}" Grid.Row="1">
+            <ListView Grid.Row="1" x:Name="lstView" ItemsSource="{Binding ListViewData}" SelectedItem="{Binding SelectedDataInput, Mode=TwoWay}" SeparatorColor="Gray" HasUnevenRows="True" ItemSelected="OnDataSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="pastelnotes50.png" Margin="20,5,0,5" HorizontalOptions="Start"/>
+                                <Label Grid.Column="1" Text="{Binding EntryDate, StringFormat='{0:MM/dd/yyyy}'}" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" FontSize="12" HorizontalTextAlignment="Start" TextColor="#4d259f"/>
+                                <Label Grid.Column="2" Text="{Binding Description}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" TextColor="#4d259f" FontAttributes="Bold" Margin="5" LineBreakMode="WordWrap"/>
+                                <Label Grid.Column="3" Text="{Binding Amount,StringFormat='{0:N}'}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" TextColor="#4d259f" FontAttributes="Bold" Margin="0"/>
+                                <Button Grid.Column="4" BackgroundColor="Transparent" HorizontalOptions="End" HeightRequest="50" Margin="0" ImageSource="pasteldelete50.png" Command="{Binding Source={x:Reference inputListPage},Path=InputModel.DeleteDataInputCommand}" CommandParameter="{Binding .}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </RefreshView>
+        <ads:AdMobView HeightRequest="90" BackgroundColor="White" Grid.Row="2"/>
+    </Grid>
+</ContentPage>

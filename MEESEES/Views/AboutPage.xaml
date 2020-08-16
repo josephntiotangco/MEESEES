@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ads="clr-namespace:MEESEES.ViewModels;assembly=MEESEES"
+             mc:Ignorable="d"
+             x:Class="MEESEES.Views.AboutPage" BackgroundColor="Transparent">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="pastelback50.png" Clicked="OnCloseButtonClicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Frame BackgroundColor="White" CornerRadius="10" Margin="30" Grid.Row="0">
+                <StackLayout Grid.Row="1">
+                    <Label Text="About" Style="{StaticResource Key=CustomLabel}" FontSize="Title"/>
+                    <Label FontSize="8" Text="{Binding AboutMessage}"/>
+                    <Label FontSize="8" Text="Special Thanks to Pastel Icons by Icons8 https://icons8.com" HorizontalTextAlignment="Center"/>
+                    <Label FontFamily="8" Text="Support: tiotangcojn@gmail.com" HorizontalTextAlignment="Center"/>
+                    <Label FontSize="8" Text="App created by jntDevz" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+            <ads:AdMobView HeightRequest="90" BackgroundColor="White" Grid.Row="1"/>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
